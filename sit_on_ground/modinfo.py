@@ -34,10 +34,16 @@ class ModInfo(CommonModInfo):
 
     @property
     def _version(self) -> str:
-        return '0.0.1'
+        return '1.0.1'
 
 
 """
+TODO
+    Remove testSet_SkirtOrDress_False from .package and use Live XML
+v1.0.1
+    Update README for new TS4 version
+v1.0.0
+    Tested version
 v0.0.1
     Initial version
 """

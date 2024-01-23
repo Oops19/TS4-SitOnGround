@@ -65,7 +65,7 @@ At least for the tunings I did this, for the ASM and postures which I cloned lat
 Add the 3 Source Tunings to the .package and duplicate them with the HEX values from above.
 
 #### Tuning
-S##### Source:
+##### Source:
 ```xml
 <I c="GoHereSuperInteraction" i="interaction" m="objects.terrain" n="terrain-gohere_AndSitOnGround" s="156620">
 <T n="allow_autonomous">False</T>
@@ -73,6 +73,7 @@ S##### Source:
 <T n="affordance">134348<!--sitOnGround--></T> ################ Source 2
 <T n="affordance">25209<!--terrain-gohere_Together--></T> ##### Source 3
 <E>TODDLER</E>
+</I>
 ```
     
 ##### Clone 1:
@@ -83,6 +84,7 @@ S##### Source:
 <T n="affordance">3016438606071826384<!-- o19:sitOnGround_Normal --></T>
 <T n="affordance">3316269230628814569<!-- o19:terrain-gohere_Together_Normal --></T>
 <E>TODDLER</E><E>CHILD</E><E>TEEN</E><E>YOUNGADULT</E><E>ADULT</E><E>ELDER</E>
+</I>
 ```
 
 ##### Clone 2:
@@ -93,6 +95,7 @@ S##### Source:
 <T n="affordance">9230597816864806592<!-- o19:sitOnGround_Kneel --></T>
 <T n="affordance">11410168178282988547<!-- o19:terrain-gohere_Together_Kneel --></T>
 <E>TODDLER</E><E>CHILD</E><E>TEEN</E><E>YOUNGADULT</E><E>ADULT</E><E>ELDER</E>
+</I>
 ```
 
 ##### Clone 3:
@@ -103,6 +106,7 @@ S##### Source:
 <T n="affordance">17292203855871925131<!-- o19:sitOnGround_CrossLegged --></T>
 <T n="affordance">8007722197060945144<!-- o19:terrain-gohere_Together_CrossLegged --></T>
 <E>TODDLER</E><E>CHILD</E><E>TEEN</E><E>YOUNGADULT</E><E>ADULT</E><E>ELDER</E>
+</I>
 ```
 
 #### Tuning
@@ -112,6 +116,7 @@ Source 2:
 <T n="enabled">134340<!--posture_SitOnGround--></T>
 <T n="display_name">0x7F29DA7B<!--Sit Here--></T>
 <E>INFANT</E><E>TODDLER</E>
+</I>
 ```
 
 ##### Clone 1:
@@ -121,6 +126,7 @@ Source 2:
 <T n="enabled">8007608924056666641</T> <!-- o19:posture_SitOnGround -->
 <T n="display_name">0x7F29DA7B<!--Sit Here--></T>
 <E>CHILD</E><E>TEEN</E><E>YOUNGADULT</E><E>ADULT</E><E>ELDER</E>
+</I>
 ```
 
 ##### Clone 2:
@@ -129,6 +135,7 @@ Source 2:
 <T n="enabled">15527<!-- posture_Kneel --></T>
 <T n="display_name">0x56B3B3D2</T><!-- 'Kneel Here' -->
 <E>CHILD</E><E>TEEN</E><E>YOUNGADULT</E><E>ADULT</E><E>ELDER</E>
+</I>
 ```
 
 ##### Clone 3:
@@ -137,6 +144,7 @@ Source 2:
 <T n="enabled">283170<!-- posture_CrossLegged --></T>
 <T n="display_name">0xD4301D29</T><!-- Sit Cross Legged Here -->
 <E>CHILD</E><E>TEEN</E><E>YOUNGADULT</E><E>ADULT</E><E>ELDER</E>
+</I>
 ```
 
 #### Tuning
@@ -144,24 +152,28 @@ Source 2:
 ```xml
 <I c="GoHereSuperInteraction" i="interaction" m="objects.terrain" n="terrain-gohere_Together" s="25209">
 <T n="enabled">15537<!--posture_Stand--></T>
+</I>
 ```
 
 ##### Clone 1:
 ```xml
 <I c="GoHereSuperInteraction" i="interaction" m="objects.terrain" n="o19:terrain-gohere_Together_Normal" s="3316269230628814569"><!-- 2E05C14B7F303EE9 -->
 <T n="enabled">8007608924056666641</T> <!-- o19:posture_SitOnGround -->
+</I>
 ```
 
 ##### Clone 2:
 ```xml
 <I c="GoHereSuperInteraction" i="interaction" m="objects.terrain" n="o19:terrain-gohere_Together_Kneel" s="11410168178282988547"><!-- 9E590F8126060403 -->
 <T n="enabled">15527<!--posture_Kneel--></T>
+</I>
 ```
 
 ##### Clone 3:
 ```xml
 <I c="GoHereSuperInteraction" i="interaction" m="objects.terrain" n="o19:terrain-gohere_Together_CrossLegged" s="8007722197060945144"><!-- 6F2124E957D404F8 -->
 <T n="enabled">283170<!--posture_CrossLegged--></T>
+</I>
 ```
 
 ### Part 2
@@ -175,6 +187,7 @@ Part 2 left here for documentation if I ever look again at it.
 <I c="Posture" i="posture" m="postures.posture" n="posture_SitOnGround" s="134340">
   <T n="_asm_key" p="InGame\Sage\SitOnGround_Posture.postureasm">02d5df13:00000000:7974025fad5f6c30</T>
   <T n="factory">134346<!--SitOnGround_Idle_Looping_Basic--></T>
+</I>
 ```
 
 ##### Clone:
@@ -182,6 +195,7 @@ Part 2 left here for documentation if I ever look again at it.
 <I c="Posture" i="posture" m="postures.posture" n="o19:posture_SitOnGround" s="8007608924056666641"><!-- 6F20BDE3EAA54211 -->
   <T n="_asm_key" p="InGame\Sage\o19_SitOnGround_Posture.postureasm">02d5df13:00000000:233718CB6113A80B</T>
   <T n="factory">2537524176832669707<!--o19:SitOnGround_Idle_Looping_Basic--></T>
+</I>
 ```
 
 #### Animation
@@ -189,21 +203,25 @@ Part 2 left here for documentation if I ever look again at it.
 ```xml
 <I c="AnimationElement" i="animation" m="animation.animation_element" n="SitOnGround_Idle_Looping_Basic" s="134346">
   <T n="asm_key" p="InGame\Sage\SitOnGround_Idle.interactionasm">02d5df13:00000000:1bfd81731efec32e</T>
+</I>
   ```
 
 ##### Clone:
 ```xml
 <I c="AnimationElement" i="animation" m="animation.animation_element" n="o19:SitOnGround_Idle_Looping_Basic" s="2537524176832669707"><!-- 233718CB6113A80B -->
   <T n="asm_key" p="InGame\Sage\o19_SitOnGround_Idle.interactionasm">02d5df13:00000000:A008CADB70EBD9B7</T>
+</I>
 ```
 
 #### ASM (Tools > Game File Cruiser)
 ##### Source 1:
 ###### 1BFD81731EFEC32E <ASM name="SitOnGround_Idle" dcc="sage">
 ```xml
-    <ParameterSelector parameter="x:age" unique_id="9">
-         <Choice value="baby" />
-        <Choice value="toddler">
+<ParameterSelector parameter="x:age" unique_id="9">
+    <Choice value="baby" />
+    <Choice value="toddler">
+    </Choice>  
+</ParameterSelector>
 ```
 
 ##### Clone 1:
@@ -221,12 +239,16 @@ Part 2 left here for documentation if I ever look again at it.
     <ParameterSelector parameter="x:age" unique_id="3">
         <Choice value="baby" />
         <Choice value="toddler">
+    </Choice>  
+</ParameterSelector>
 ```
 
 ```xml
     <ParameterSelector parameter="x:age" unique_id="8">
         <Choice value="baby" />
         <Choice value="toddler">
+    </Choice>  
+</ParameterSelector>
 ```
 
 ##### Clone 2:
@@ -248,13 +270,13 @@ Add child-elder:
 # Addendum
 
 ## Game compatibility
-This mod has been tested with `The Sims 4` 1.98.158 (2023-06), S4CL 2.7 (2023-06), TS4Lib 0.0.24 (2023-06).
+This mod has been tested with `The Sims 4` 1.100.147 (2023-09), S4CL 2.8 (2023-08), TS4Lib 0.1.7 (2023-09).
 It is expected to be compatible with many upcoming releases of TS4, S4CL and TS4Lib.
 
 ## Dependencies
 * [The Sims 4](https://www.ea.com/games/the-sims/the-sims-4)
+* [TS4-Library](https://github.com/Oops19/TS4-Library/releases/latest)
 * [S4CL](https://github.com/ColonolNutty/Sims4CommunityLibrary/releases/latest)
-* [TS4Lib](https://github.com/Oops19/TS4-Library/releases/latest)
 
 If not installed download and install TS4 and these mods.
 All are available for free.
@@ -277,7 +299,7 @@ This mod does not send any data to tracking servers. The code is open source, no
 Some log entries in the log file ('mod_logs' folder) may contain the local username, especially if files are not found (WARN, ERROR).
 
 ## External Links
-[Sources](https://github.com/Oops19/)
+[Sources](https://v/Oops19/)
 [Support](https://discord.gg/d8X9aQ3jbm)
 [Donations](https://www.patreon.com/o19)
 
