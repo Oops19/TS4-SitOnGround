@@ -1,6 +1,6 @@
 #
 # LICENSE https://creativecommons.org/licenses/by/4.0/ https://creativecommons.org/licenses/by/4.0/legalcode
-# © 2023 https://github.com/Oops19
+# © 2024 https://github.com/Oops19
 #
 
 
@@ -34,12 +34,14 @@ class ModInfo(CommonModInfo):
 
     @property
     def _version(self) -> str:
-        return '1.0.1'
+        return '1.0.2'
 
 
 """
 TODO
     Remove testSet_SkirtOrDress_False from .package and use Live XML
+v1.0.2
+    Update README for new TS4 version
 v1.0.1
     Update README for new TS4 version
 v1.0.0
