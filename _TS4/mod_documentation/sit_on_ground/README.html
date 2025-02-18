@@ -1,0 +1,455 @@
+<h1>Sit On Ground</h1>
+<br/>
+<h3>~~Sit Here~~</h3>
+<h3>Kneel Here</h3>
+<h3>Sit Cross Legged Here</h3>
+<br/>
+This is a mod to let sims sit down. It's my first shameless copy and paste mod using EA XML code and editing only a few lines.<br/>
+Actually it should support three sit interactions, but I never got the first one working.<br/>
+When playing the animation with Pose Player it looked very odd for teen+ sims. So maybe it's better that it isn't included.<br/>
+<br/>
+So it offers 'Kneel Here' which should be very similar to the 'MizoreYukii_KneelAnywhere' mod. If you end up with two 'Knee Here' interactions you should know why.<br/>
+Except that it includes references to 'infants' which didn't exist back then when 'MizoreYukii' created this mod.<br/>
+<br/>
+It also includes 'Sit Cross Legged Here' so sims can sit like this on the ground.<br/>
+(Vanilla feature: To sit like this on the bed, select the pillow and select 'Sit'.)<br/>
+<br/>
+I hope that this mod doesn't break as copying content may also lead to missing data after an update.<br/>
+At least it doesn't replace any default tuning.<br/>
+<br/>
+This mod requires S4CL to register the interactions.<br/>
+<br/>
+<h2>Updates</h2>
+Don't expect updates of this mod, I hope it works quite long.<br/>
+<br/>
+One day I may extend PatchXML to read the tunings I used, patch them and add them to TS4 dynamically.<br/>
+<br/>
+<h1>Development</h1>
+Skip this section if you just want to use the mod.<br/>
+<br/>
+I looked at MizoreYukiis mod a lot and the S4S tuning browser to figure out which interaction to clone.<br/>
+After the 1st interaction has been selected one will find references to used interactions, affordances, ASMs in it.<br/>
+Cloning the other data is quite easy.<br/>
+<br/>
+If things don't work as expected it makes sense to look at the vanilla logs.<br/>
+<br/>
+One should as soon as possible define the names one wants to use to avoid ending up with a mess of names.<br/>
+At least for the tunings I did this, for the ASM and postures which I cloned later I didn't.<br/>
+<br/>
+<h2>FNV Values:</h2>
+<h3>STBL</h3>
+<ul>
+	<li>Source: 'Sit Here'</li>
+	<li>Clone2: 'Kneel Here' -> 56B3B3D2 0x56B3B3D2  # Also prepend 0x here as we need to paste it later.</li>
+	<li>Clone3: 'Sit Cross Legged Here' -> 0xD4301D29</li>
+	<li>==> Add this to a new STBL and then copy this STBL to all languages (with S4S).</li>
+</ul>
+<br/>
+<h3>Sources and 3x Clones:</h3>
+<ul>
+	<li>n="terrain-gohere_AndSitOnGround" s="156620"></li>
+	<li>n="o19:terrain-gohere_AndSitOnGround_Normal" s="8633370080534645170">&lt;!-- 77CFE458C0C0C9B2 --&gt;</li>
+	<li>n="o19:terrain-gohere_AndSitOnGround_Kneel" s="2269303342278328074">&lt;!-- 1F7E2F5DD41B3F0A --&gt;</li>
+	<li>n="o19:terrain-gohere_AndSitOnGround_CrossLegged" s="4082710649035378841">&lt;!-- 38A8B3B444755099 --&gt;</li>
+</ul>
+<br/>
+<br/>
+<ul>
+	<li>n="sitOnGround" s="134348"></li>
+	<li>n="o19:sitOnGround_Normal" s="3016438606071826384">&lt;!-- 29DC8AEE31AF87D0 --&gt;</li>
+	<li>n="o19:sitOnGround_Kneel" s="9230597816864806592">&lt;!-- 8019ABCF02B916C0 --&gt;</li>
+	<li>n="o19:sitOnGround_CrossLegged" s="17292203855871925131">&lt;!-- EFFA3FC9F4E2DB8B --&gt;</li>
+</ul>
+<br/>
+<br/>
+<ul>
+	<li>n="terrain-gohere_Together" s="25209"></li>
+	<li>n="o19:terrain-gohere_Together_Normal" s="3316269230628814569">&lt;!-- 2E05C14B7F303EE9 --&gt;</li>
+	<li>n="o19:terrain-gohere_Together_Kneel" s="11410168178282988547">&lt;!-- 9E590F8126060403 --&gt;</li>
+	<li>n="o19:terrain-gohere_Together_CrossLegged" s="8007722197060945144">&lt;!-- 6F2124E957D404F8 --&gt;</li>
+</ul>
+<br/>
+<h3>Action</h3>
+Add the 3 Source Tunings to the .package and duplicate them with the HEX values from above.<br/>
+<br/>
+<h4>Tuning</h4>
+<h5>Source:</h5>
+<pre>
+&lt;I c="GoHereSuperInteraction" i="interaction" m="objects.terrain" n="terrain-gohere_AndSitOnGround" s="156620"&gt;
+&lt;T n="allow_autonomous"&gt;False&lt;/T&gt;
+&lt;T n="display_name"&gt;0x7F29DA7B&lt;!--Sit Here--&gt;&lt;/T&gt;  ############ STBL
+&lt;T n="affordance"&gt;134348&lt;!--sitOnGround--&gt;&lt;/T&gt; ################ Source 2
+&lt;T n="affordance"&gt;25209&lt;!--terrain-gohere_Together--&gt;&lt;/T&gt; ##### Source 3
+&lt;E&gt;TODDLER&lt;/E&gt;
+&lt;/I&gt;
+</pre>
+<br/>
+<h5>Clone 1:</h5>
+<pre>
+&lt;I c="GoHereSuperInteraction" i="interaction" m="objects.terrain" n="o19:terrain-gohere_AndSitOnGround_Normal" s="8633370080534645170"&gt;&lt;!-- 77CFE458C0C0C9B2 --&gt;
+&lt;T n="allow_autonomous"&gt;True&lt;/T&gt;
+&lt;T n="display_name"&gt;0x7F29DA7B&lt;!--Sit Here--&gt;&lt;/T&gt;
+&lt;T n="affordance"&gt;3016438606071826384&lt;!-- o19:sitOnGround_Normal --&gt;&lt;/T&gt;
+&lt;T n="affordance"&gt;3316269230628814569&lt;!-- o19:terrain-gohere_Together_Normal --&gt;&lt;/T&gt;
+&lt;E&gt;TODDLER&lt;/E&gt;&lt;E&gt;CHILD&lt;/E&gt;&lt;E&gt;TEEN&lt;/E&gt;&lt;E&gt;YOUNGADULT&lt;/E&gt;&lt;E&gt;ADULT&lt;/E&gt;&lt;E&gt;ELDER&lt;/E&gt;
+&lt;/I&gt;
+</pre>
+<br/>
+<h5>Clone 2:</h5>
+<pre>
+&lt;I c="GoHereSuperInteraction" i="interaction" m="objects.terrain" n="o19:terrain-gohere_AndSitOnGround_CrossLegged" s="4082710649035378841"&gt;&lt;!-- 38A8B3B444755099 --&gt;
+&lt;T n="allow_autonomous"&gt;True&lt;/T&gt;
+&lt;T n="display_name"&gt;0x56B3B3D2&lt;/T&gt;&lt;!-- 'Kneel Here' --&gt;
+&lt;T n="affordance"&gt;9230597816864806592&lt;!-- o19:sitOnGround_Kneel --&gt;&lt;/T&gt;
+&lt;T n="affordance"&gt;11410168178282988547&lt;!-- o19:terrain-gohere_Together_Kneel --&gt;&lt;/T&gt;
+&lt;E&gt;TODDLER&lt;/E&gt;&lt;E&gt;CHILD&lt;/E&gt;&lt;E&gt;TEEN&lt;/E&gt;&lt;E&gt;YOUNGADULT&lt;/E&gt;&lt;E&gt;ADULT&lt;/E&gt;&lt;E&gt;ELDER&lt;/E&gt;
+&lt;/I&gt;
+</pre>
+<br/>
+<h5>Clone 3:</h5>
+<pre>
+&lt;I c="GoHereSuperInteraction" i="interaction" m="objects.terrain" n="o19:terrain-gohere_Together_Kneel" s="11410168178282988547"&gt;&lt;!-- 9E590F8126060403 --&gt;
+&lt;T n="allow_autonomous"&gt;True&lt;/T&gt;
+&lt;T n="display_name"&gt;0xD4301D29&lt;/T&gt;&lt;!-- Sit Cross Legged Here --&gt;
+&lt;T n="affordance"&gt;17292203855871925131&lt;!-- o19:sitOnGround_CrossLegged --&gt;&lt;/T&gt;
+&lt;T n="affordance"&gt;8007722197060945144&lt;!-- o19:terrain-gohere_Together_CrossLegged --&gt;&lt;/T&gt;
+&lt;E&gt;TODDLER&lt;/E&gt;&lt;E&gt;CHILD&lt;/E&gt;&lt;E&gt;TEEN&lt;/E&gt;&lt;E&gt;YOUNGADULT&lt;/E&gt;&lt;E&gt;ADULT&lt;/E&gt;&lt;E&gt;ELDER&lt;/E&gt;
+&lt;/I&gt;
+</pre>
+<br/>
+<h4>Tuning</h4>
+Source 2:<br/>
+<pre>
+&lt;I c="SuperInteraction" i="interaction" m="interactions.base.super_interaction" n="sitOnGround" s="134348"&gt;
+&lt;T n="enabled"&gt;134340&lt;!--posture_SitOnGround--&gt;&lt;/T&gt;
+&lt;T n="display_name"&gt;0x7F29DA7B&lt;!--Sit Here--&gt;&lt;/T&gt;
+&lt;E&gt;INFANT&lt;/E&gt;&lt;E&gt;TODDLER&lt;/E&gt;
+&lt;/I&gt;
+</pre>
+<br/>
+<h5>Clone 1:</h5>
+<pre>
+&lt;I c="SuperInteraction" i="interaction" m="interactions.base.super_interaction" n="o19:sitOnGround_Normal" s="3016438606071826384"&gt;&lt;!-- 29DC8AEE31AF87D0 --&gt;
+# &lt;T n="enabled"&gt;134340&lt;!--posture_SitOnGround--&gt;&lt;/T&gt;
+&lt;T n="enabled"&gt;8007608924056666641&lt;/T&gt; &lt;!-- o19:posture_SitOnGround --&gt;
+&lt;T n="display_name"&gt;0x7F29DA7B&lt;!--Sit Here--&gt;&lt;/T&gt;
+&lt;E&gt;CHILD&lt;/E&gt;&lt;E&gt;TEEN&lt;/E&gt;&lt;E&gt;YOUNGADULT&lt;/E&gt;&lt;E&gt;ADULT&lt;/E&gt;&lt;E&gt;ELDER&lt;/E&gt;
+&lt;/I&gt;
+</pre>
+<br/>
+<h5>Clone 2:</h5>
+<pre>
+&lt;I c="SuperInteraction" i="interaction" m="interactions.base.super_interaction" n="o19:sitOnGround_Kneel" s="9230597816864806592"&gt;&lt;!-- 8019ABCF02B916C0 --&gt;
+&lt;T n="enabled"&gt;15527&lt;!-- posture_Kneel --&gt;&lt;/T&gt;
+&lt;T n="display_name"&gt;0x56B3B3D2&lt;/T&gt;&lt;!-- 'Kneel Here' --&gt;
+&lt;E&gt;CHILD&lt;/E&gt;&lt;E&gt;TEEN&lt;/E&gt;&lt;E&gt;YOUNGADULT&lt;/E&gt;&lt;E&gt;ADULT&lt;/E&gt;&lt;E&gt;ELDER&lt;/E&gt;
+&lt;/I&gt;
+</pre>
+<br/>
+<h5>Clone 3:</h5>
+<pre>
+&lt;I c="SuperInteraction" i="interaction" m="interactions.base.super_interaction" n="o19:sitOnGround_CrossLegged" s="17292203855871925131"&gt;&lt;!-- EFFA3FC9F4E2DB8B --&gt;
+&lt;T n="enabled"&gt;283170&lt;!-- posture_CrossLegged --&gt;&lt;/T&gt;
+&lt;T n="display_name"&gt;0xD4301D29&lt;/T&gt;&lt;!-- Sit Cross Legged Here --&gt;
+&lt;E&gt;CHILD&lt;/E&gt;&lt;E&gt;TEEN&lt;/E&gt;&lt;E&gt;YOUNGADULT&lt;/E&gt;&lt;E&gt;ADULT&lt;/E&gt;&lt;E&gt;ELDER&lt;/E&gt;
+&lt;/I&gt;
+</pre>
+<br/>
+<h4>Tuning</h4>
+<h5>Source 3:</h5>
+<pre>
+&lt;I c="GoHereSuperInteraction" i="interaction" m="objects.terrain" n="terrain-gohere_Together" s="25209"&gt;
+&lt;T n="enabled"&gt;15537&lt;!--posture_Stand--&gt;&lt;/T&gt;
+&lt;/I&gt;
+</pre>
+<br/>
+<h5>Clone 1:</h5>
+<pre>
+&lt;I c="GoHereSuperInteraction" i="interaction" m="objects.terrain" n="o19:terrain-gohere_Together_Normal" s="3316269230628814569"&gt;&lt;!-- 2E05C14B7F303EE9 --&gt;
+&lt;T n="enabled"&gt;8007608924056666641&lt;/T&gt; &lt;!-- o19:posture_SitOnGround --&gt;
+&lt;/I&gt;
+</pre>
+<br/>
+<h5>Clone 2:</h5>
+<pre>
+&lt;I c="GoHereSuperInteraction" i="interaction" m="objects.terrain" n="o19:terrain-gohere_Together_Kneel" s="11410168178282988547"&gt;&lt;!-- 9E590F8126060403 --&gt;
+&lt;T n="enabled"&gt;15527&lt;!--posture_Kneel--&gt;&lt;/T&gt;
+&lt;/I&gt;
+</pre>
+<br/>
+<h5>Clone 3:</h5>
+<pre>
+&lt;I c="GoHereSuperInteraction" i="interaction" m="objects.terrain" n="o19:terrain-gohere_Together_CrossLegged" s="8007722197060945144"&gt;&lt;!-- 6F2124E957D404F8 --&gt;
+&lt;T n="enabled"&gt;283170&lt;!--posture_CrossLegged--&gt;&lt;/T&gt;
+&lt;/I&gt;
+</pre>
+<br/>
+<h3>Part 2</h3>
+Nothing of the things below is in the .package file as it didn't work.<br/>
+<br/>
+Part 2 left here for documentation if I ever look again at it.<br/>
+<br/>
+<h4>Posture</h4>
+<h5>Source:</h5>
+<pre>
+&lt;I c="Posture" i="posture" m="postures.posture" n="posture_SitOnGround" s="134340"&gt;
+  &lt;T n="_asm_key" p="InGame\Sage\SitOnGround_Posture.postureasm"&gt;02d5df13:00000000:7974025fad5f6c30&lt;/T&gt;
+  &lt;T n="factory"&gt;134346&lt;!--SitOnGround_Idle_Looping_Basic--&gt;&lt;/T&gt;
+&lt;/I&gt;
+</pre>
+<br/>
+<h5>Clone:</h5>
+<pre>
+&lt;I c="Posture" i="posture" m="postures.posture" n="o19:posture_SitOnGround" s="8007608924056666641"&gt;&lt;!-- 6F20BDE3EAA54211 --&gt;
+  &lt;T n="_asm_key" p="InGame\Sage\o19_SitOnGround_Posture.postureasm"&gt;02d5df13:00000000:233718CB6113A80B&lt;/T&gt;
+  &lt;T n="factory"&gt;2537524176832669707&lt;!--o19:SitOnGround_Idle_Looping_Basic--&gt;&lt;/T&gt;
+&lt;/I&gt;
+</pre>
+<br/>
+<h4>Animation</h4>
+<h5>Source:</h5>
+<pre>
+&lt;I c="AnimationElement" i="animation" m="animation.animation_element" n="SitOnGround_Idle_Looping_Basic" s="134346"&gt;
+  &lt;T n="asm_key" p="InGame\Sage\SitOnGround_Idle.interactionasm"&gt;02d5df13:00000000:1bfd81731efec32e&lt;/T&gt;
+&lt;/I&gt;
+  <i>`</i>
+
+##### Clone:
+<pre>
+&lt;I c="AnimationElement" i="animation" m="animation.animation_element" n="o19:SitOnGround_Idle_Looping_Basic" s="2537524176832669707"&gt;&lt;!-- 233718CB6113A80B --&gt;
+  &lt;T n="asm_key" p="InGame\Sage\o19_SitOnGround_Idle.interactionasm"&gt;02d5df13:00000000:A008CADB70EBD9B7&lt;/T&gt;
+&lt;/I&gt;
+</pre>
+<br/>
+<h4>ASM (Tools > Game File Cruiser)</h4>
+<h5>Source 1:</h5>
+<h6>1BFD81731EFEC32E <ASM name="SitOnGround_Idle" dcc="sage"></h6>
+<pre>
+&lt;ParameterSelector parameter="x:age" unique_id="9"&gt;
+    &lt;Choice value="baby" /&gt;
+    &lt;Choice value="toddler"&gt;
+    &lt;/Choice&gt;
+&lt;/ParameterSelector&gt;
+</pre>
+<br/>
+<h5>Clone 1:</h5>
+<h6>o19:SitOnGround_Idle -> A008CADB70EBD9B7</h6>
+Add child-elder<br/>
+<pre>
+    &lt;Choice value="child"&gt;
+        &lt;Reference target="9" /&gt;
+    &lt;/Choice&gt;
+</pre>
+<br/>
+<h5>Source 2:</h5>
+<h6>7974025FAD5F6C30 <ASM name="SitOnGround_Posture" dcc="sage"></h6>
+<pre>
+    &lt;ParameterSelector parameter="x:age" unique_id="3"&gt;
+        &lt;Choice value="baby" /&gt;
+        &lt;Choice value="toddler"&gt;
+    &lt;/Choice&gt;
+&lt;/ParameterSelector&gt;
+</pre>
+<br/>
+<pre>
+    &lt;ParameterSelector parameter="x:age" unique_id="8"&gt;
+        &lt;Choice value="baby" /&gt;
+        &lt;Choice value="toddler"&gt;
+    &lt;/Choice&gt;
+&lt;/ParameterSelector&gt;
+</pre>
+<br/>
+<h5>Clone 2:</h5>
+<h6>o19:SitOnGround_Posture -> C426D31860D08EB7</h6>
+Add child-elder:<br/>
+<pre>
+    &lt;Choice value="child"&gt;
+        &lt;Reference target="3" /&gt;
+    &lt;/Choice&gt;
+    &lt;Choice value="child"&gt;
+        &lt;Reference target="8" /&gt;
+    &lt;/Choice&gt;
+</pre>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<h1>Addendum</h1>
+<br/>
+<h2>Game compatibility</h2>
+This mod has been tested with <i>The Sims 4</i> 1.111.102, S4CL 3.9, TS4Lib 0.3.33.<br/>
+It is expected to be compatible with many upcoming releases of TS4, S4CL and TS4Lib.<br/>
+<br/>
+<h2>Dependencies</h2>
+Download the ZIP file, not the sources.<br/>
+<ul>
+	<li><a href='../../releases/latest'>This Mod</a></li>
+	<li><a href='https://github.com/Oops19/TS4-Library/releases/latest'>TS4-Library</a></li>
+	<li><a href='https://github.com/ColonolNutty/Sims4CommunityLibrary/releases/latest'>S4CL</a></li>
+	<li><a href='https://www.ea.com/games/the-sims/the-sims-4'>The Sims 4</a></li>
+</ul>
+<br/>
+If not installed download and install TS4 and these mods.<br/>
+All are available for free.<br/>
+<br/>
+<h2>Installation</h2>
+<ul>
+	<li>Locate the localized <i>The Sims 4</i> folder which contains the <i>Mods</i> folder.</li>
+	<li>Extract the ZIP file into this <i>The Sims 4</i> folder.</li>
+	<li>It will create the directories/files <i>Mods/_o19_/$mod_name.ts4script`, <i>Mods/_o19_/$mod_name.package`, <i>mod_data/$mod_name/*</i> and/or <i>mod_documentation/$mod_name/*`</li>
+	<li>`mod_logs/$mod_name.txt</i> will be created as soon as data is logged.</li>
+</ul>
+<br/>
+<h3>Manual Installation</h3>
+If you don't want to extract the ZIP file into <i>The Sims 4</i> folder you might want to read this.<br/>
+<ul>
+	<li>The files in <i>ZIP-File/mod_data</i> are usually required and should be extracted to <i>The Sims 4/mod_data`.</li>
+	<li>The files in <i>ZIP-File/mod_documentation</i> are for you to read it. They are not needed to use this mod.</li>
+	<li>The <i>Mods/_o19_/*.ts4script</i> files can be stored in a random folder within <i>Mods</i> or directly in <i>Mods</i>. I highly recommend to store it in <i>_o19_</i> so you know who created it.</li>
+</ul>
+<br/>
+<h2>Usage Tracking / Privacy</h2>
+This mod does not send any data to tracking servers. The code is open source, not obfuscated, and can be reviewed.<br/>
+<br/>
+Some log entries in the log file ('mod_logs' folder) may contain the local username, especially if files are not found (WARN, ERROR).<br/>
+<br/>
+<h2>External Links</h2>
+<a href='https://github.com/Oops19/'>Sources</a><br/>
+<a href='https://discord.gg/d8X9aQ3jbm'>Support</a><br/>
+<a href='https://www.patreon.com/o19'>Donations</a><br/>
+<br/>
+<h2>Copyright and License</h2>
+<ul>
+	<li>© 2024 <a href='https://github.com/Oops19'>Oops19</a></li>
+	<li>License for '.package' files: <a href='https://tos.ea.com/legalapp/WEBTERMS/US/en/PC/'>Electronic Arts TOS for UGC</a></li>
+	<li>License for other media unless specified differently: <a href='https://creativecommons.org/licenses/by/4.0/'>CC BY 4.0</a> unless the Electronic Arts TOS for UGC overrides it.</li>
+</ul>
+This allows you to use this mod and re-use the code even if you don't own The Sims 4.<br/>
+Have fun extending this mod and/or integrating it with your mods.<br/>
+<br/>
+Oops19 / o19 is not endorsed by or affiliated with Electronic Arts or its licensors.<br/>
+Game content and materials copyright Electronic Arts Inc. and its licensors.<br/>
+Trademarks are the property of their respective owners.<br/>
+<br/>
+<h3>TOS</h3>
+<ul>
+	<li>Please don't put it behind a paywall.</li>
+	<li>Please don't create mods which break with every TS4 update.</li>
+	<li>For simple tuning modifications use <a href='https://github.com/Oops19/TS4-PatchXML'>Patch-XML</a></li>
+	<li>or <a href='https://github.com/Oops19/TS4-LiveXML'>LiveXML</a>.</li>
+	<li>To check the XML structure of custom tunings use <a href='https://github.com/Oops19/TS4-VanillaLogs'>VanillaLogs</a>.</li>
+</ul>
+<br/>
+<br/>
+<br/>
+<h1>Addendum</h1>
+<br/>
+<h2>Game compatibility</h2>
+This mod has been tested with <i>The Sims 4</i> 1.112.519, S4CL 3.10, TS4Lib 0.3.36.<br/>
+It is expected to be compatible with many upcoming releases of TS4, S4CL and TS4Lib.<br/>
+<br/>
+<h2>Dependencies</h2>
+Download the ZIP file, not the sources.<br/>
+<ul>
+	<li><a href='../../releases/latest'>This Mod</a></li>
+	<li><a href='https://github.com/Oops19/TS4-Library/releases/latest'>TS4-Library</a></li>
+	<li><a href='https://github.com/ColonolNutty/Sims4CommunityLibrary/releases/latest'>S4CL</a></li>
+	<li><a href='https://www.ea.com/games/the-sims/the-sims-4'>The Sims 4</a></li>
+</ul>
+<br/>
+If not installed download and install TS4 and these mods.<br/>
+All are available for free.<br/>
+<br/>
+<h2>Removal of the mod</h2>
+The mod installation with unzip writes to a few directories.<br/>
+To remove this mod and all related files locate the files and folders and remove them:<br/>
+<ul>
+	<li>`The Sims 4/Mods/_o19_/$mod_name.*`</li>
+	<li>`The Sims 4/mod_data/_o19_/$mod_name/`</li>
+	<li>`The Sims 4/mod_documentation/_o19_/$mod_name/`</li>
+	<li>`The Sims 4/mod_sources/_o19_/$mod_name/`</li>
+</ul>
+<br/>
+To remove all of my mods locate these folders and remove them:<br/>
+<ul>
+	<li>`The Sims 4/Mods/_o19_/`</li>
+	<li>`The Sims 4/mod_data/_o19_/`</li>
+	<li>`The Sims 4/mod_documentation/_o19_/`</li>
+	<li>`The Sims 4/mod_sources/_o19_/`</li>
+</ul>
+<br/>
+<h2>Installation</h2>
+<ul>
+	<li>Locate the localized <i>The Sims 4</i> folder which contains the <i>Mods</i> folder.</li>
+	<li>Extract the ZIP file into this <i>The Sims 4</i> folder.</li>
+	<li>It will create the directories/files <i>Mods/_o19_/$mod_name.ts4script`, <i>Mods/_o19_/$mod_name.package`, <i>mod_data/$mod_name/*</i> and/or <i>mod_documentation/$mod_name/*</i> and/or <i>mod_sources/$mod_name/*`</li>
+	<li>CAS and build-buy UGC without scripts will create <i>Mods/o19/$mod_name.package`.</li>
+	<li>`mod_logs/$mod_name.txt</i> will be created as soon as data is logged.</li>
+	<li>`mod_documentation/$mod_name/</i> and/or <i>mod_sources/$mod_name/</i> are not required and can be deleted.</li>
+</ul>
+<br/>
+<h3>Manual Installation</h3>
+If you don't want to extract the ZIP file into <i>The Sims 4</i> folder you might want to read this.<br/>
+You can extract the ZIP file to a temporary directory and copy the folders manually.<br/>
+<ul>
+	<li>The files in <i>ZIP-File/mod_data</i> are usually required and should be extracted to <i>The Sims 4/mod_data`.</li>
+	<li>The files in <i>ZIP-File/mod_documentation</i> are for you to read it. They are not needed to use this mod.</li>
+	<li>The files in <i>ZIP-File/mod_sources</i> are not needed to use this mod.</li>
+	<li>The <i>Mods/_o19_/*.ts4script</i> files can be stored in a random folder within <i>Mods</i> or directly in <i>Mods</i>. I highly recommend to store it in <i>_o19_</i> so you know who created it.</li>
+</ul>
+<br/>
+<h2>Troubleshooting</h2>
+When installed properly this is not necessary at all.<br/>
+For manual installations check these things and make sure each question can be answered with 'yes'.<br/>
+<ul>
+	<li>Does 'The Sims 4' (localized to Die Sims 4, Les Sims 4, Los Sims 4, The Sims 4, ...) exist?</li>
+	<li>Does <i>The Sims 4</i> contain the folder <i>Mods`?</li>
+	<li>Does <i>Mods</i> contain the folder <i>_o19_`?</li>
+	<li>Does <i>_19_</i> contain <i>ts4lib.ts4script</i> and <i>ts4lib.package</i> files?</li>
+	<li>Does <i>_19_</i> contain <i>{mod_name}.ts4script</i> and/or <i>{mod_name}.package</i> files?</li>
+	<li>Does <i>The Sims 4</i> contain the folder <i>mod_data`?</li>
+	<li>Does <i>mod_data</i> contain the folder <i>{mod_name}`?</li>
+	<li>Does <i>{mod_name}</i> contain files or folders?</li>
+	<li>Does <i>The Sims 4</i> contain the <i>mod_logs</i> ?</li>
+	<li>Does <i>mod_logs</i> contain the file <i>Sims4CommunityLib_*_Messages.txt`?</li>
+	<li>Does <i>mod_logs</i> contain the file <i>TS4-Library_*_Messages.txt`?</li>
+	<li>Is this the most recent version or can it be updated?</li>
+	<li>Does <i>mod_logs</i> contain the file <i>{mod_name}_*_Messages.txt`?</li>
+	<li>Is this the most recent version or can it be updated?</li>
+	<li>Doesn't <i>The Sims 4</i> contain the file(s) <i>last_exception.txt</i>  and/or <i>last_exception*.txt</i> ?</li>
+	<li>Share the <i>The Sims 4/mod_logs/Sims4CommunityLib_*_Messages.txt</i> and <i>The Sims 4/mod_logs/{mod_name}_*_Messages.txt</i>  file.</li>
+</ul>
+<br/>
+<h2>Usage Tracking / Privacy</h2>
+This mod does not send any data to tracking servers. The code is open source, not obfuscated, and can be reviewed.<br/>
+<br/>
+Some log entries in the log file ('mod_logs' folder) may contain the local username, especially if files are not found (WARN, ERROR).<br/>
+<br/>
+<h2>External Links</h2>
+<a href='https://github.com/Oops19/'>Sources</a><br/>
+<a href='https://discord.gg/d8X9aQ3jbm'>Support</a><br/>
+<a href='https://www.patreon.com/o19'>Donations</a><br/>
+<br/>
+<h2>Copyright and License</h2>
+<ul>
+	<li>© 2020-2025 <a href='https://github.com/Oops19'>Oops19</a></li>
+	<li>License for '.package' files: <a href='https://tos.ea.com/legalapp/WEBTERMS/US/en/PC/'>Electronic Arts TOS for UGC</a></li>
+	<li>License for other media unless specified differently: <a href='https://creativecommons.org/licenses/by/4.0/'>CC BY 4.0</a> unless the Electronic Arts TOS for UGC overrides it.</li>
+</ul>
+This allows you to use this mod and re-use the code even if you don't own The Sims 4.<br/>
+Have fun extending this mod and/or integrating it with your mods.<br/>
+<br/>
+Oops19 / o19 is not endorsed by or affiliated with Electronic Arts or its licensors.<br/>
+Game content and materials copyright Electronic Arts Inc. and its licensors.<br/>
+Trademarks are the property of their respective owners.<br/>
+<br/>
+<h3>TOS</h3>
+<ul>
+	<li>Please don't put it behind a paywall.</li>
+	<li>Please don't create mods which break with every TS4 update.</li>
+	<li>For simple tuning modifications use <a href='https://github.com/Oops19/TS4-PatchXML'>Patch-XML</a></li>
+	<li>or <a href='https://github.com/Oops19/TS4-LiveXML'>LiveXML</a>.</li>
+	<li>To check the XML structure of custom tunings use <a href='https://github.com/Oops19/TS4-VanillaLogs'>VanillaLogs</a>.</li>
+</ul>
+<br/>
