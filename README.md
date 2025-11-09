@@ -1,42 +1,46 @@
-# Sit On Ground
+# 🪑 Sit On Ground
 
 ### ~~Sit Here~~
 ### Kneel Here 
 ### Sit Cross Legged Here
 
-This is a mod to let sims sit down. It's my first shameless copy and paste mod using EA XML code and editing only a few lines.
-Actually it should support three sit interactions, but I never got the first one working.
-When playing the animation with Pose Player it looked very odd for teen+ sims. So maybe it's better that it isn't included.
+This mod lets Sims sit down.
+It’s my first shameless copy-and-paste mod using EA XML code with only a few lines edited.
 
-So it offers 'Kneel Here' which should be very similar to the 'MizoreYukii_KneelAnywhere' mod. If you end up with two 'Knee Here' interactions you should know why.
-Except that it includes references to 'infants' which didn't exist back then when 'MizoreYukii' created this mod.
+Originally, it was meant to support three sit interactions, but I never got the first one ("Sit Here") working.  
+When testing the animation with Pose Player, it looked odd for teen+ Sims — so maybe it's better that it's not included.
 
-It also includes 'Sit Cross Legged Here' so sims can sit like this on the ground.
-(Vanilla feature: To sit like this on the bed, select the pillow and select 'Sit'.)
+The mod offers:
 
-I hope that this mod doesn't break as copying content may also lead to missing data after an update.
-At least it doesn't replace any default tuning.
+- **Kneel Here** — similar to the `MizoreYukii_KneelAnywhere` mod.  
+  If you see two "Kneel Here" interactions, now you know why.  
+  This version includes references to infants, which didn’t exist when MizoreYukii created their mod.
 
-This mod requires S4CL to register the interactions.
+- **Sit Cross Legged Here** — lets Sims sit cross-legged on the ground.  
+  *(Vanilla feature: To sit like this on a bed, click the pillow and choose "Sit")*
 
-## Updates
-Don't expect updates of this mod, I hope it works quite long.
+This mod doesn’t override any default tuning, so it’s less likely to break after updates — though copying content can still lead to missing data if EA changes things.
 
-One day I may extend PatchXML to read the tunings I used, patch them and add them to TS4 dynamically.
+## 🔄 Updates
 
-# Development
+Don’t expect frequent updates — I hope it works for a long time.
+
+One day I might extend [Patch-XML](https://github.com/Oops19/TS4-PatchXML) to read the tunings I used, patch them, and add them to TS4 dynamically.
+
+## 🧑‍💻 Development
+
 Skip this section if you just want to use the mod.
 
-I looked at MizoreYukiis mod a lot and the S4S tuning browser to figure out which interaction to clone.
-After the 1st interaction has been selected one will find references to used interactions, affordances, ASMs in it.
-Cloning the other data is quite easy.
+I studied MizoreYukii’s mod and used the S4S tuning browser to figure out which interaction to clone.  
+Once the first interaction is selected, you’ll find references to other interactions, affordances, and ASMs.  
+Cloning the rest is fairly straightforward.
 
-If things don't work as expected it makes sense to look at the vanilla logs.
+If things don’t work as expected, check the vanilla logs.
 
-One should as soon as possible define the names one wants to use to avoid ending up with a mess of names.
-At least for the tunings I did this, for the ASM and postures which I cloned later I didn't.
+It’s important to define your naming conventions early — otherwise you’ll end up with a mess.  
+I did this for the tunings, but not for the ASM and postures I cloned later.
 
-## FNV Values:
+## 🔢 FNV Values:
 ### STBL
 * Source: 'Sit Here'
 * Clone2: 'Kneel Here' -> 56B3B3D2 0x56B3B3D2  # Also prepend 0x here as we need to paste it later.
@@ -267,54 +271,63 @@ Add child-elder:
 
 
 
-# Addendum
+# 📝 Addendum
 
-## Game compatibility
-This mod has been tested with `The Sims 4` 1.118.257, S4CL 3.15, TS4Lib 0.3.42.
-It is expected to be compatible with many upcoming releases of TS4, S4CL and TS4Lib.
+## 🔄 Game compatibility
+This mod has been tested with `The Sims 4` 1.119.109, S4CL 3.15, TS4Lib 0.3.42.
+It is expected to remain compatible with future releases of TS4, S4CL, and TS4Lib.
 
-## Dependencies
-Download the ZIP file, not the sources.
+## 📦 Dependencies
+Download the ZIP file - not the source code.
+Required components:
 * [This Mod](../../releases/latest)
 * [TS4-Library](https://github.com/Oops19/TS4-Library/releases/latest)
 * [S4CL](https://github.com/ColonolNutty/Sims4CommunityLibrary/releases/latest)
 * [The Sims 4](https://www.ea.com/games/the-sims/the-sims-4)
 
-If not installed download and install TS4 and these mods.
-All are available for free.
+If not already installed, download and install TS4 and the listed mods. All are available for free.
 
-## Removal of the mod
-The mod installation with unzip writes to a few directories.
-To remove this mod and all related files locate the files and folders and remove them:
-* `The Sims 4/Mods/_o19_/$mod_name.*`
-* `The Sims 4/mod_data/_o19_/$mod_name/`
-* `The Sims 4/mod_documentation/_o19_/$mod_name/`
-* `The Sims 4/mod_sources/_o19_/$mod_name/`
+## 📥 Installation
+* Locate the localized `The Sims 4` folder (it contains the `Mods` folder).
+* Extract the ZIP file directly into this folder.
 
-To remove all of my mods locate these folders and remove them:
-* `The Sims 4/Mods/_o19_/`
-* `The Sims 4/mod_data/_o19_/`
-* `The Sims 4/mod_documentation/_o19_/`
-* `The Sims 4/mod_sources/_o19_/`
- 
-## Installation
-* Locate the localized `The Sims 4` folder which contains the `Mods` folder.
-* Extract the ZIP file into this `The Sims 4` folder.
-* It will create the directories/files `Mods/_o19_/$mod_name.ts4script`, `Mods/_o19_/$mod_name.package`, `mod_data/$mod_name/*` and/or `mod_documentation/$mod_name/*` and/or `mod_sources/$mod_name/*`
-* CAS and build-buy UGC without scripts will create `Mods/o19/$mod_name.package`.
-* `mod_logs/$mod_name.txt` will be created as soon as data is logged.
-* `mod_documentation/$mod_name/` and/or `mod_sources/$mod_name/` are not required and can be deleted.
+This will create:
+* `Mods/_o19_/$mod_name.ts4script`
+* `Mods/_o19_/$mod_name.package`
+* `mod_data/$mod_name/*`
+* `mod_documentation/$mod_name/*` (optional)
+* `mod_sources/$mod_name/*` (optional)
 
-### Manual Installation
-If you don't want to extract the ZIP file into `The Sims 4` folder you might want to read this.
-You can extract the ZIP file to a temporary directory and copy the folders manually.
-* The files in `ZIP-File/mod_data` are usually required and should be extracted to `The Sims 4/mod_data`.
-* The files in `ZIP-File/mod_documentation` are for you to read it. They are not needed to use this mod.
-* The files in `ZIP-File/mod_sources` are not needed to use this mod.
-* The `Mods/_o19_/*.ts4script` files can be stored in a random folder within `Mods` or directly in `Mods`. I highly recommend to store it in `_o19_` so you know who created it.
+Additional notes:
+* CAS and Build/Buy UGC without scripts will create `Mods/o19/$mod_name.package`.
+* A log file `mod_logs/$mod_name.txt` will be created once data is logged.
+* You may safely delete `mod_documentation/` and `mod_sources/` folders if not needed.
 
-## Troubleshooting
-When installed properly this is not necessary at all.
+### 📂 Manual Installation
+If you prefer not to extract directly into `The Sims 4`, you can extract to a temporary location and copy files manually:
+* Copy `mod_data/` contents to `The Sims 4/mod_data/` (usually required).
+* `mod_documentation/` is for reference only — not required.
+* `mod_sources/` is not needed to run the mod.
+* `.ts4script` files can be placed in a folder inside `Mods/`, but storing them in `_o19_` is recommended for clarity.
+* `.package` files can be placed in a anywhere inside `Mods/`.
+
+## 🛠️ Troubleshooting
+If installed correctly, no troubleshooting should be necessary.
+For manual installs, verify the following:
+* Does your localized `The Sims 4` folder exist? (e.g. localized to Die Sims 4, Les Sims 4, Los Sims 4, The Sims 4, ...)
+  * Does it contain a `Mods/` folder?
+    * Does Mods/_o19_/ contain:
+      * `ts4lib.ts4script` and `ts4lib.package`?
+      * `{mod_name}.ts4script` and/or `{mod_name}.package`
+* Does `mod_data/` contain `{mod_name}/` with files?
+* Does `mod_logs/` contain:
+  * `Sims4CommunityLib_*_Messages.txt`?
+  * `TS4-Library_*_Messages.txt`?
+  * `{mod_name}_*_Messages.txt`?
+* Are there any `last_exception.txt` or `last_exception*.txt` files in `The Sims 4`?
+
+
+* When installed properly this is not necessary at all.
 For manual installations check these things and make sure each question can be answered with 'yes'.
 * Does 'The Sims 4' (localized to Die Sims 4, Les Sims 4, Los Sims 4, The Sims 4, ...) exist?
   * Does `The Sims 4` contain the folder `Mods`?
@@ -333,30 +346,52 @@ For manual installations check these things and make sure each question can be a
   * Doesn't `The Sims 4` contain the file(s) `last_exception.txt`  and/or `last_exception*.txt` ?
 * Share the `The Sims 4/mod_logs/Sims4CommunityLib_*_Messages.txt` and `The Sims 4/mod_logs/{mod_name}_*_Messages.txt`  file.
 
-## Usage Tracking / Privacy
-This mod does not send any data to tracking servers. The code is open source, not obfuscated, and can be reviewed.
+If issues persist, share:
+`mod_logs/Sims4CommunityLib_*_Messages.txt`
+`mod_logs/{mod_name}_*_Messages.txt`
 
-Some log entries in the log file ('mod_logs' folder) may contain the local username, especially if files are not found (WARN, ERROR).
+## 🕵️ Usage Tracking / Privacy
+This mod does not send any data to external servers.
+The code is open source, unobfuscated, and fully reviewable.
 
-## External Links
+Note: Some log entries (especially warnings or errors) may include your local username if file paths are involved.
+Share such logs with care.
+
+## 🔗 External Links
 [Sources](https://github.com/Oops19/)
 [Support](https://discord.gg/d8X9aQ3jbm)
 [Donations](https://www.patreon.com/o19)
 
-## Copyright and License
+## ⚖️ Copyright and License
 * © 2020-2025 [Oops19](https://github.com/Oops19)
-* License for '.package' files: [Electronic Arts TOS for UGC](https://tos.ea.com/legalapp/WEBTERMS/US/en/PC/)  
-* License for other media unless specified differently: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) unless the Electronic Arts TOS for UGC overrides it.
-This allows you to use this mod and re-use the code even if you don't own The Sims 4.
-Have fun extending this mod and/or integrating it with your mods.
+* `.package` files: [Electronic Arts TOS for UGC](https://tos.ea.com/legalapp/WEBTERMS/US/en/PC/)  
+* All other content (unless otherwise noted): [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) 
 
-Oops19 / o19 is not endorsed by or affiliated with Electronic Arts or its licensors.
-Game content and materials copyright Electronic Arts Inc. and its licensors. 
-Trademarks are the property of their respective owners.
+You may use and adapt this mod and its code — even without owning The Sims 4.
+Have fun extending or integrating it into your own mods!
 
-### TOS
-* Please don't put it behind a paywall.
-* Please don't create mods which break with every TS4 update.
-* For simple tuning modifications use [Patch-XML](https://github.com/Oops19/TS4-PatchXML) 
-* or [LiveXML](https://github.com/Oops19/TS4-LiveXML).
-* To check the XML structure of custom tunings use [VanillaLogs](https://github.com/Oops19/TS4-VanillaLogs).
+Oops19 / o19 is not affiliated with or endorsed by Electronic Arts or its licensors.
+Game content and materials © Electronic Arts Inc. and its licensors.
+All trademarks are the property of their respective owners.
+
+## 🧾 Terms of Service
+* Do not place this mod behind a paywall.
+* Avoid creating mods that break with every TS4 update.
+* For simple tuning mods, consider using:
+  * [Patch-XML](https://github.com/Oops19/TS4-PatchXML) 
+  * [LiveXML](https://github.com/Oops19/TS4-LiveXML).
+* To verify custom tuning structures, use:
+  * [VanillaLogs](https://github.com/Oops19/TS4-VanillaLogs).
+
+## 🗑️ Removing the Mod
+Installing this mod creates files in several directories. To fully remove it, delete:
+* `The Sims 4/Mods/_o19_/$mod_name.*`
+* `The Sims 4/mod_data/_o19_/$mod_name/`
+* `The Sims 4/mod_documentation/_o19_/$mod_name/`
+* `The Sims 4/mod_sources/_o19_/$mod_name/`
+
+To remove all of my mods, delete the following folders:
+* `The Sims 4/Mods/_o19_/`
+* `The Sims 4/mod_data/_o19_/`
+* `The Sims 4/mod_documentation/_o19_/`
+* `The Sims 4/mod_sources/_o19_/`
